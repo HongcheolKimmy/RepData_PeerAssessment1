@@ -12,9 +12,15 @@ fileUrl <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
 download.file(fileUrl, "./reproducible/activity.zip")
 unzip("./reproducible/activity.zip", exdir="./reproducible")
 dataset <- read.csv("./reproducible/activity.csv")
-fileDir <- './reproducible'
+fileDir <- './reproducible/RepData_PeerAssessment1'
 setwd(fileDir)
+```
 
+```
+## Error: cannot change working directory
+```
+
+```r
 library(knitr)
 library(markdown)
 library(plyr)
@@ -349,7 +355,7 @@ As we impute missing data, quantile of the data were changed, expecially 1st and
 
 ## 5. Are there differences in activity patterns between weekdays and weekends?
 
-### 5.1 Create a new factor variable in the dataset with two levels ??? ¡°weekday¡± and ¡°weekend¡± indicating whether a given date is a weekday or weekend day.
+### 5.1 Create a new factor variable in the dataset with two levels ¡°weekday¡± and ¡°weekend¡± indicating whether a given date is a weekday or weekend day.
 
 ```r
 Sys.setlocale("LC_TIME", "English")

@@ -199,10 +199,14 @@ fileUrl &lt;- &quot;https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factiv
 download.file(fileUrl, &quot;./reproducible/activity.zip&quot;)
 unzip(&quot;./reproducible/activity.zip&quot;, exdir=&quot;./reproducible&quot;)
 dataset &lt;- read.csv(&quot;./reproducible/activity.csv&quot;)
-fileDir &lt;- &#39;./reproducible&#39;
+fileDir &lt;- &#39;./reproducible/RepData_PeerAssessment1&#39;
 setwd(fileDir)
+</code></pre>
 
-library(knitr)
+<pre><code>## Error: cannot change working directory
+</code></pre>
+
+<pre><code class="r">library(knitr)
 library(markdown)
 library(plyr)
 library(ggplot2)
@@ -473,7 +477,7 @@ print(tot2)
 
 <h2>5. Are there differences in activity patterns between weekdays and weekends?</h2>
 
-<h3>5.1 Create a new factor variable in the dataset with two levels ??? “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.</h3>
+<h3>5.1 Create a new factor variable in the dataset with two levels “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.</h3>
 
 <pre><code class="r">Sys.setlocale(&quot;LC_TIME&quot;, &quot;English&quot;)
 </code></pre>
