@@ -33,7 +33,7 @@ library(scales)
 ```r
 daytotalsteps <- ddply(dataset, .(date), summarize, totalSteps = sum(steps, na.rm=T))
 ```
-Among the total number of steps taken each day, we have some zero values. So, here I want to intepret these values, and will decide whether I am going to include them or not.
+Among the total number of steps taken each day, we have some zero values. So, here I want to interpret these values, and will decide whether I am going to include them or not.
 
 
 ```r
@@ -63,7 +63,7 @@ summary(is.na(dataset[dataset$date=="2012-10-01",]))
 ##  TRUE:288       FALSE:288       FALSE:288      
 ##  NA's:0         NA's :0         NA's :0
 ```
-Here I made a summary for one of the zero values to check how many of original values are missing values and how many of them are real zero values. According to the result(all 288 values of 'steps' are missing values), we can say that all of step values are missed, which means it doesn't make sense to include them as a zero value. Simply because missing value doesn't mean zero value. That's why I will drop all aero values here with the following command.
+Here I made a summary for one of the zero values to check how many of original values are missing values and how many of them are real zero values. According to the result(all 288 values of 'steps' are missing values), we can say that all of step values are missed, which means it doesn't make sense to include them as a zero value. Simply because missing value doesn't mean zero value. That's why I will drop all zero values here with the following command.
 
 
 ```r
@@ -161,7 +161,7 @@ summary(is.na(dataset[dataset$interval==40,]))
 ##  NA's :0
 ```
 
-Here I also make a summay for one of the zero values. However, here we see totally diffenrent data construction. As you can see here we have only 8 missing values among 61 values, and it takes only 13% of the total values, and the portion of missing value of other intervals is same. What that means is we can use these zero values as real zero values. Here it doesn't make sense to drop these zero values because of small portion of missing values. That's why I won't drop any value from them.
+Here I also make a summary for one of the zero values. However, here we see totally different data construction. As you can see here we have only 8 missing values among 61 values, and it takes only 13% of the total values, and the portion of missing value of other intervals is same. What that means is we can use these zero values as real zero values. Here it doesn't make sense to drop these zero values because of small portion of missing values. That's why I won't drop any value from them.
 
 For those who wants to implement other zero values, here is the code again.
 
@@ -251,7 +251,7 @@ mergedData$steps <- mergedData$averageSteps
 mergedData$averageSteps <- NULL
 ```
 
-To combind with the original 'dataset' change the order of columns and rows of 'mergedData', and put it back to the 'dataset'
+To combine with the original 'dataset' change the order of columns and rows of 'mergedData', and put it back to the 'dataset'
 
 ```r
 mergedData <- subset(mergedData, select=c(steps, date, interval))
@@ -342,7 +342,7 @@ sd(daytotalstepsNEW$totalStepsNEW)
 ```
 ## [1] 3974
 ```
-As we impute missing data, quantile of the data were changed, expecially 1st and 3rd quantile were pushed into the centeric direction. In other words, standard deviation of the data was decreased.
+As we impute missing data, quantile of the data were changed, especially 1st and 3rd quantile were pushed into the centric direction. In other words, standard deviation of the data was decreased.
 
 
 

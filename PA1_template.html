@@ -216,7 +216,7 @@ library(scales)
 <pre><code class="r">daytotalsteps &lt;- ddply(dataset, .(date), summarize, totalSteps = sum(steps, na.rm=T))
 </code></pre>
 
-<p>Among the total number of steps taken each day, we have some zero values. So, here I want to intepret these values, and will decide whether I am going to include them or not.</p>
+<p>Among the total number of steps taken each day, we have some zero values. So, here I want to interpret these values, and will decide whether I am going to include them or not.</p>
 
 <pre><code class="r">zerototalsteps &lt;- daytotalsteps[daytotalsteps$totalSteps==0,]
 zerototalsteps
@@ -242,7 +242,7 @@ zerototalsteps
 ##  NA&#39;s:0         NA&#39;s :0         NA&#39;s :0
 </code></pre>
 
-<p>Here I made a summary for one of the zero values to check how many of original values are missing values and how many of them are real zero values. According to the result(all 288 values of &#39;steps&#39; are missing values), we can say that all of step values are missed, which means it doesn&#39;t make sense to include them as a zero value. Simply because missing value doesn&#39;t mean zero value. That&#39;s why I will drop all aero values here with the following command.</p>
+<p>Here I made a summary for one of the zero values to check how many of original values are missing values and how many of them are real zero values. According to the result(all 288 values of &#39;steps&#39; are missing values), we can say that all of step values are missed, which means it doesn&#39;t make sense to include them as a zero value. Simply because missing value doesn&#39;t mean zero value. That&#39;s why I will drop all zero values here with the following command.</p>
 
 <pre><code class="r">daytotalsteps &lt;- daytotalsteps[daytotalsteps$totalSteps != 0,]
 </code></pre>
@@ -321,7 +321,7 @@ zeroAverageSteps
 ##  NA&#39;s :0
 </code></pre>
 
-<p>Here I also make a summay for one of the zero values. However, here we see totally diffenrent data construction. As you can see here we have only 8 missing values among 61 values, and it takes only 13% of the total values, and the portion of missing value of other intervals is same. What that means is we can use these zero values as real zero values. Here it doesn&#39;t make sense to drop these zero values because of small portion of missing values. That&#39;s why I won&#39;t drop any value from them.</p>
+<p>Here I also make a summary for one of the zero values. However, here we see totally different data construction. As you can see here we have only 8 missing values among 61 values, and it takes only 13% of the total values, and the portion of missing value of other intervals is same. What that means is we can use these zero values as real zero values. Here it doesn&#39;t make sense to drop these zero values because of small portion of missing values. That&#39;s why I won&#39;t drop any value from them.</p>
 
 <p>For those who wants to implement other zero values, here is the code again.</p>
 
@@ -395,7 +395,7 @@ mergedData$steps &lt;- mergedData$averageSteps
 mergedData$averageSteps &lt;- NULL
 </code></pre>
 
-<p>To combind with the original &#39;dataset&#39; change the order of columns and rows of &#39;mergedData&#39;, and put it back to the &#39;dataset&#39;</p>
+<p>To combine with the original &#39;dataset&#39; change the order of columns and rows of &#39;mergedData&#39;, and put it back to the &#39;dataset&#39;</p>
 
 <pre><code class="r">mergedData &lt;- subset(mergedData, select=c(steps, date, interval))
 mergedData &lt;- mergedData[with(mergedData, order(date, interval)),]
@@ -469,7 +469,7 @@ print(tot2)
 <pre><code>## [1] 3974
 </code></pre>
 
-<p>As we impute missing data, quantile of the data were changed, expecially 1st and 3rd quantile were pushed into the centeric direction. In other words, standard deviation of the data was decreased.</p>
+<p>As we impute missing data, quantile of the data were changed, especially 1st and 3rd quantile were pushed into the centric direction. In other words, standard deviation of the data was decreased.</p>
 
 <h2>5. Are there differences in activity patterns between weekdays and weekends?</h2>
 
